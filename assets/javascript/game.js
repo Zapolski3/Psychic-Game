@@ -9,6 +9,8 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l',
 var wins = 0;
 var losses = 0;
 var guesses = 10;
+var yourGuesses = [];
+
 
     var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 
@@ -32,8 +34,7 @@ document.onkeypress = function(event) {
         losses++
     }
 
-    var yourGuesses = [];
-    yourGuesses.unshift(userGuess);
+    yourGuesses.push(userGuess);
 
 
     document.getElementById("yourGuessesSoFar").innerHTML = "Your Guesses so far: "+ userGuess;
