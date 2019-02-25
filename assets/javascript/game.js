@@ -33,8 +33,9 @@ console.log(event);
 
 
     if(userGuess === computerChoice){
+        
         wins++;
-
+        alert('you won');
         resetGame();
     }
     else{
