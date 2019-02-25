@@ -8,36 +8,49 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l',
 // Variables for tracking our wins, losses and ties. They begin at 0.
 var wins = 0;
 var losses = 0;
-var guesses = 10;
+var guesses;
 var yourGuesses = [];
 
 
-    var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+    var computerChoice;
 
+   
+
+   function resetGame () {
+    guesses=10;
+    yourGuesses=[];
+    computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
     console.log(computerChoice)
-
-    
-    
+    document.getElementById("yourGuessesSoFar").innerHTML = "Your Guesses so far: "+ yourGuesses;
+    document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
+   }
+    resetGame();
 
    // When the user presses a key, it will run the following function...
 document.onkeypress = function(event) {
     var userGuess = event.key;
+console.log(event);
+
 
     if(userGuess === computerChoice){
         wins++;
+
+        resetGame();
     }
     else{
         guesses--;
     }
 
     if(guesses === 0){
-        losses++
-    }
+        losses++;
+
+        resetGame();
+}
 
     yourGuesses.push(userGuess);
 
 
-    document.getElementById("yourGuessesSoFar").innerHTML = "Your Guesses so far: "+ userGuess;
+    document.getElementById("yourGuessesSoFar").innerHTML = "Your Guesses so far: "+ yourGuesses;
         
 
     document.getElementById("wins").innerHTML = "Wins: " + wins;
